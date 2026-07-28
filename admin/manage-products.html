@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard | AgroVerse Nepal</title>
+  <title>Manage Products | AgroVerse Nepal Admin</title>
   <meta name="robots" content="noindex, nofollow" />
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="../css/base.css" />
@@ -13,46 +12,40 @@
 </head>
 <body>
   <div class="admin-shell">
-    <aside class="admin-sidebar" id="admin-sidebar" data-active="overview"></aside>
+    <aside class="admin-sidebar" id="admin-sidebar" data-active="products"></aside>
 
     <div class="admin-main">
       <div class="admin-topbar">
         <div>
-          <h1 style="font-size:var(--fs-lg)">Overview</h1>
-          <p style="color:var(--color-text-muted);font-size:var(--fs-sm)">Welcome back, Platform Administrator.</p>
+          <h1 style="font-size:var(--fs-lg)">Manage Products</h1>
+          <p style="color:var(--color-text-muted);font-size:var(--fs-sm)">${''}<span id="product-count-label">Loading…</span></p>
         </div>
-        <div style="display:flex;align-items:center;gap:var(--space-3)">
-          <button class="btn btn-outline btn-sm" id="theme-toggle"><i class="fa-solid fa-moon"></i> Dark Mode</button>
-          <button class="btn btn-outline btn-sm"><i class="fa-solid fa-file-excel"></i> Export Excel</button>
-          <button class="btn btn-outline btn-sm"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
-        </div>
+        <button class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Add Product</button>
       </div>
 
       <div class="admin-content">
-        <div class="stat-cards" id="stat-cards"></div>
-
-        <div class="admin-panel">
-          <h3>Orders — Last 7 Days</h3>
-          <div class="chart-bars" id="orders-chart"></div>
-          <div class="chart-legend-x" id="orders-chart-labels"></div>
-        </div>
-
         <div class="admin-panel">
           <div class="admin-toolbar">
-            <h3 style="margin:0">Recent Orders</h3>
             <div class="admin-search">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="search" placeholder="Search order ID…" aria-label="Search orders" />
+              <input type="search" id="product-search" placeholder="Search products…" aria-label="Search products" />
+            </div>
+            <div style="display:flex;gap:var(--space-2)">
+              <button class="btn btn-outline btn-sm"><i class="fa-solid fa-filter"></i> Filter</button>
+              <button class="btn btn-outline btn-sm"><i class="fa-solid fa-file-excel"></i> Export</button>
             </div>
           </div>
+
           <div style="overflow-x:auto">
             <table class="admin-table">
               <thead>
-                <tr><th>Order ID</th><th>Buyer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th></tr>
+                <tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Availability</th><th>Actions</th></tr>
               </thead>
-              <tbody id="orders-table-body"></tbody>
+              <tbody id="products-table-body"></tbody>
             </table>
           </div>
+
+          <div style="display:flex;justify-content:center;gap:var(--space-2);margin-top:var(--space-5)" id="pagination"></div>
         </div>
       </div>
     </div>
@@ -64,6 +57,6 @@
   <script src="../js/utils.js"></script>
   <script src="../js/data-service.js"></script>
   <script src="../js/components/admin-sidebar.js"></script>
-  <script src="../js/admin/dashboard.js"></script>
+  <script src="../js/admin/manage-products.js"></script>
 </body>
 </html>
